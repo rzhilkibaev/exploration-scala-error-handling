@@ -15,7 +15,7 @@ class IFEClient(httpClient: HttpClient)(implicit executionContext: ExecutionCont
     }  else {
       httpClient.get(false)
     }
-   f.flatMap(r => Future(responseToUser(r)))
+   f.map(r => responseToUser(r))
   }
 
   private def responseToUser(response: Response): User = {
